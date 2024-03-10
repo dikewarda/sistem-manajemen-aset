@@ -10,4 +10,29 @@ class AdminController extends Controller
     {
         return response()->view('admin.dashboard');
     }
+
+    public function hi_calculator()
+    {
+        return response()->view('admin.health_index');
+    }
+
+    public function custom_formula()
+    {
+        return response()->view('admin.custom_formula');
+    }
+
+    public function parameter()
+    {
+        return response()->view('admin.parameter');
+    }
+
+    public function trafo_data()
+    {
+        return response()->view('admin.trafo_data');
+    }
+
+    public function database()
+    {
+        return response()->view('admin.database');
+    }
 }

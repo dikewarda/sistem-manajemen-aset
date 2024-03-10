@@ -20,4 +20,9 @@ Route::get('/', function () {
 
 Route::controller(AdminController::class)->group(function () {
     Route::get('/dashboard', 'index')->name('dashboard');
+    Route::get('/health-index-calculator', 'hi_calculator')->name('hi_calculator');
+    Route::get('/custom-formula', 'custom_formula')->name('custom_formula');
+    Route::get('/parameter', 'parameter')->name('parameter');
+    Route::get('/transformer-data', 'trafo_data')->name('trafo_data');
+    Route::get('/database', 'database')->name('database');
 });
