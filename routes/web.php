@@ -29,3 +29,6 @@ Route::controller(AdminController::class)->group(function () {
     // POST
     Route::post('/calculate-oil-factor', 'calculateOilFactor')->name('calculate.oil.factors');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
