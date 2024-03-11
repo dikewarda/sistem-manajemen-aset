@@ -6,9 +6,21 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    // Health Index Calculator Page
     public function index()
     {
         return response()->view('admin.dashboard');
+    }
+
+    public function calculateOilFactor(Request $request)
+    {
+        $request->validate([
+            'bdv' => 'required',
+            'waterContent' => 'required',
+            'acidity' => 'required',
+            'tension' => 'required',
+            'colorScale' => 'required',
+        ]);
     }
 
     public function hi_calculator()
