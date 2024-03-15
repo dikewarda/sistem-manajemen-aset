@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,9 +26,11 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/custom-formula', 'custom_formula')->name('custom_formula');
     Route::get('/parameter', 'parameter')->name('parameter');
     Route::get('/transformer-data', 'trafo_data')->name('trafo_data');
+    Route::get('/variabel', 'variable')->name('variable');
     Route::get('/database', 'database')->name('database');
     // POST
     Route::post('/calculate-oil-factor', 'calculateOilFactor')->name('calculate.oil.factors');
+    Route::post('/select-formula', 'selectFormula')->name('selectFormula');
 });
 Auth::routes();
 

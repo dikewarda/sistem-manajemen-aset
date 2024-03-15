@@ -19,7 +19,34 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Oil Quality Factor<span> (click field to input value)</span></h5>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <select class="form-select mb-3" id="floatingSelect" aria-label="Floating label select example">
+                                    <option selected>Open to select formula</option>
+                                    @foreach ($formulas as $formula)
+                                    <option value="{{ $formula->formula }}">{{ $formula->name }}</option>
+                                    @endforeach
+                                </select>
+                                <label for="floatingSelect">Formula</label>
+                            </div>
+                        </div>
+                        @if (!empty($matchedData))
+                        @foreach ($matchedData as $data)
+                        <p>Parameter: {{ $data['parameter'] }}</p>
+                        <p>Weighting: {{ $data['weighting'] }}</p>
+                        <p>Scoring: {{ $data['scoring'] }}</p>
+                        @endforeach
+                        @else
+                        <p>No matched data found.</p>
+                        @endif
 
+                        @if (!empty($variables))
+                        <pre>
+                        {{ print_r($variables) }}
+                        </pre>
+                        @else
+                        <p>No matched variable found.</p>
+                        @endif
                         <form class="row g-3" action="{{ route('calculate.oil.factors')}}" method="POST">
                             @csrf
                             <div class="col-12">
@@ -210,4 +237,27 @@
     </section>
 
 </main>
+
+<script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('#floatingSelect').change(function() {
+            var selectedFormula = $(this).val();
+            $.ajax({
+                type: "POST",
+                url: "{{ url('select-formula') }}",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    selectFormula: selectedFormula,
+                },
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
 @endsection
