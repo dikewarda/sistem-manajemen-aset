@@ -17,23 +17,23 @@ class WeightingSeeder extends Seeder
         //BDV
         DB::table('weightings')->insert([
             'variable' => 'Wbdv',
-            'weight' => 0.169,
+            'value' => 0.169,
         ]);
         DB::table('weightings')->insert([
             'variable' => 'Wwc',
-            'weight' => 0.108,
+            'value' => 0.108,
         ]);
         DB::table('weightings')->insert([
             'variable' => 'Wacid',
-            'weight' => 0.139,
+            'value' => 0.139,
         ]);
         DB::table('weightings')->insert([
             'variable' => 'Wit',
-            'weight' => 0.124,
+            'value' => 0.124,
         ]);
         DB::table('weightings')->insert([
-            'variable' => 'Wsc',
-            'weight' => 0.114,
+            'variable' => 'Wcs',
+            'value' => 0.114,
         ]);
     }
 }

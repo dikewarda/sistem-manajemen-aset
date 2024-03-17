@@ -16,7 +16,7 @@ class CreateWeightingsTable extends Migration
         Schema::create('weightings', function (Blueprint $table) {
             $table->id();
             $table->string('variable');
-            $table->float('weight', 10, 5);
+            $table->float('value', 10, 5);
             $table->timestamps();
         });
     }

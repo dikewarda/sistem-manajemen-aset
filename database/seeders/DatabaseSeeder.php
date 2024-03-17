@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             VariableSeeder::class,
             ScoringSeeder::class,
             WeightingSeeder::class,
+            RatingSeeder::class,
             OilFactorSeeder::class,
         ]);
     }

@@ -22,5 +22,9 @@ class VariableSeeder extends Seeder
             'variable' => 'weightings',
             'jumlah_data' => 5,
         ]);
+        DB::table('variables')->insert([
+            'variable' => 'rating_values',
+            'jumlah_data' => 5,
+        ]);
     }
 }

@@ -12,7 +12,7 @@
                 <li class="breadcrumb-item active">Profile</li>
             </ol>
         </nav>
-    </div><!-- End Page Title -->
+    </div>
 
     <section class="section profile">
         <div class="row">
@@ -20,7 +20,6 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Daftar Formula</h5>
-                        <!-- List group with active and disabled items -->
                         <ul class="list-group" id="formulaList">
                             @if ($formulas->isEmpty())
                             <p>No formulas available.</p>
@@ -33,14 +32,18 @@
                                 @endforeach
                             </ul>
                             @endif
-                        </ul><!-- End ist group with active and disabled items -->
+                        </ul>
                     </div>
                 </div>
             </div>
 
             <div class="col-xl-8">
                 <div class="card">
-                    <div class="card-body" id="formulaDetails">
+                <div class="card-header py-0 ps-3" style="border-color: #fff;">
+                    <h5 class="card-title mb-0" id="formulaTitle"></h5>
+                </div>
+                    <div class="card-body">
+                        <div id="formulaDetails"></div>
                     </div>
                 </div>
 
@@ -50,27 +53,22 @@
 
 </main>
 <script>
-    // Function to fetch formula details based on the selected name
     function fetchFormulaDetails(name) {
-        // Find the formula by name in the array
         const selectedFormula = @json($formulas->keyBy('name')-> toArray())[name];
 
-        // Display the details in the second card
+        const formulaTitle = document.getElementById('formulaTitle');
+        formulaTitle.innerHTML = '';
         const formulaDetails = document.getElementById('formulaDetails');
         formulaDetails.innerHTML = '';
 
         if (selectedFormula) {
-            const formulaName = document.createElement('h5');
-            formulaName.classList.add('card-title');
-            formulaName.textContent = selectedFormula.name;
+            formulaTitle.textContent = selectedFormula.name; // Mengatur judul formula
 
             const formulaContent = document.createElement('p');
             formulaContent.textContent = selectedFormula.formula.replace(/,/g, ' '); // Replace commas with spaces
 
-            formulaDetails.appendChild(formulaName);
             formulaDetails.appendChild(formulaContent);
         } else {
-            // Handle the case when the formula is not found
             const errorMessage = document.createElement('p');
             errorMessage.textContent = 'Formula not found.';
             formulaDetails.appendChild(errorMessage);

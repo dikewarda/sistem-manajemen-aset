@@ -16,28 +16,28 @@ class OilFactorSeeder extends Seeder
     {
         DB::table('oil_factors')->insert([
             'parameter' => 'Break Down Voltage (kV)',
-            'weighting' => 'Wbdv',
-            'scoring' => 'Sbdv',
+            'weightings' => 'Wbdv',
+            'scorings' => 'Sbdv',
         ]);
         DB::table('oil_factors')->insert([
             'parameter' => 'Water Content (ppm)',
-            'weighting' => 'Wwc',
-            'scoring' => 'Swc',
+            'weightings' => 'Wwc',
+            'scorings' => 'Swc',
         ]);
         DB::table('oil_factors')->insert([
             'parameter' => 'Acidity (MgKOH/mg)',
-            'weighting' => 'Wacid',
-            'scoring' => 'Sacid',
+            'weightings' => 'Wacid',
+            'scorings' => 'Sacid',
         ]);
         DB::table('oil_factors')->insert([
             'parameter' => 'Interfacial Tension (Dyne/cm)',
-            'weighting' => 'Wit',
-            'scoring' => 'Sit',
+            'weightings' => 'Wit',
+            'scorings' => 'Sit',
         ]);
         DB::table('oil_factors')->insert([
             'parameter' => 'Color Scale',
-            'weighting' => 'Wsc',
-            'scoring' => 'Scs',
+            'weightings' => 'Wcs',
+            'scorings' => 'Scs',
         ]);
     }
 }

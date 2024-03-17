@@ -16,7 +16,7 @@ class CreateScoringsTable extends Migration
         Schema::create('scorings', function (Blueprint $table) {
             $table->id();
             $table->string('variable');
-            $table->integer('score');
+            $table->integer('value');
             $table->float('min', 10, 5)->nullable();
             $table->float('max', 10, 5)->nullable();
             $table->timestamps();

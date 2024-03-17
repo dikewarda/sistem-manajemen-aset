@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOilFactorsTable extends Migration
+class CreateRatingValuesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateOilFactorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('oil_factors', function (Blueprint $table) {
+        Schema::create('rating_values', function (Blueprint $table) {
             $table->id();
-            $table->string('parameter');
-            $table->string('weightings');
-            $table->string('scorings');
+            $table->string('code');
+            $table->string('condition');
+            $table->float('value');
+            $table->float('min', 10, 5)->nullable();
+            $table->float('max', 10, 5)->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateOilFactorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('oil_factors');
+        Schema::dropIfExists('rating_values');
     }
 }
