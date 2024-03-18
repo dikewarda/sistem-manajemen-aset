@@ -172,7 +172,61 @@ class AdminController extends Controller
     public function custom_formula()
     {
         $formulas = formula::all();
-        return view('admin.custom_formula', compact('formulas'));
+        $variables = DB::table('variables')->pluck('variable')->toArray();
+        $data = [];
+        foreach ($variables as $var) {
+            if (Schema::hasTable($var)) {
+                $columns = Schema::getColumnListing($var);
+                if (in_array('variable', $columns)) {
+                    $tableData = DB::table($var)->pluck('variable')->unique()->toArray();
+                    $data[$var] = $tableData;
+                }
+            }
+        }
+        $data['operators'] = ['+', '-', '*', '/', '%', '**', '(', ')'];
+        return view('admin.custom_formula', compact('formulas', 'data'));
+    }
+
+    public function addFormula(Request $request)
+    {
+        $formula = str_replace(' ', ',', $request->formula);
+
+        formula::create([
+            'name' => $request->formula_name,
+            'formula' => $formula,
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function editFormula(Request $request)
+    {
+        $formulaId = $request->formula_id;
+
+        $formula = Formula::find($formulaId);
+
+        if ($formula) {
+            $formula->name = $request->edit_formula_name;
+            $formula->formula = str_replace(' ', ',', $request->edit_formula);
+
+            $formula->save();
+
+            return redirect()->back();
+        } else {
+            return redirect()->back();
+        }
+    }
+
+    public function deleteFormula($formulaId)
+    {
+        $formula = Formula::find($formulaId);
+
+        if ($formula) {
+            $formula->delete();
+            return response()->json(['message' => 'Formula berhasil dihapus'], 200);
+        } else {
+            return response()->json(['message' => 'Formula tidak ditemukan'], 404);
+        }
     }
 
     // Parameter Page

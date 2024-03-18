@@ -31,6 +31,10 @@ Route::controller(AdminController::class)->group(function () {
     // POST
     Route::post('/calculate-oil-factor', 'calculateOilFactor')->name('calculate.oil.factors');
     Route::post('/select-formula', 'selectFormula')->name('selectFormula');
+    Route::post('/add-formula', 'addFormula')->name('add.formula');
+    Route::post('/edit-formula', 'editFormula')->name('edit.formula');
+    // DELETE
+    Route::delete('/delete-formula/{formulaId}', 'deleteFormula')->name('delete.formula');
 });
 Auth::routes();
 

@@ -1056,6 +1056,26 @@ h6 {
   max-width: 120px;
 }
 
+.addButton{
+  padding: 0 4px 0 4px;
+}
+
+#clearInput {
+  position: absolute;
+  z-index: 1;
+  right: 24px;
+  top: 43%;
+  transform: translateY(-50%);
+}
+
+#clearEdit {
+  position: absolute;
+  z-index: 1;
+  right: 24px;
+  top: 43%;
+  transform: translateY(-50%);
+}
+
 /*--------------------------------------------------------------
 # F.A.Q Page
 --------------------------------------------------------------*/
