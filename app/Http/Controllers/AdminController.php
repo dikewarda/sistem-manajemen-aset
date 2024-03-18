@@ -43,6 +43,11 @@ class AdminController extends Controller
         return response()->view('admin.trafo_data');
     }
 
+    public function user()
+    {
+        return response()->view('admin.user.index');
+    }
+
     public function database()
     {
         return response()->view('admin.database');

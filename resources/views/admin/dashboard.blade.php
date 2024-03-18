@@ -38,15 +38,15 @@
                             </div>
 
                             <div class="card-body">
-                                <h5 class="card-title">Sales <span>| Today</span></h5>
+                                <h5 class="card-title">Trafo <span>| Today</span></h5>
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                         <i class="bi bi-cart"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>145</h6>
-                                        <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                                        <h6>0</h6>
+                                        <span class="text-success small pt-1 fw-bold">0%</span> <span class="text-muted small pt-2 ps-1">increase</span>
 
                                     </div>
                                 </div>
@@ -73,15 +73,15 @@
                             </div>
 
                             <div class="card-body">
-                                <h5 class="card-title">Revenue <span>| This Month</span></h5>
+                                <h5 class="card-title">Health Index <span>| Today</span></h5>
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                         <i class="bi bi-currency-dollar"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>$3,264</h6>
-                                        <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                                        <h6>0%</h6>
+                                        <span class="text-success small pt-1 fw-bold">0%</span> <span class="text-muted small pt-2 ps-1">increase</span>
 
                                     </div>
                                 </div>
@@ -109,15 +109,15 @@
                             </div>
 
                             <div class="card-body">
-                                <h5 class="card-title">Customers <span>| This Year</span></h5>
+                                <h5 class="card-title">Health Index <span>| This Month</span></h5>
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                         <i class="bi bi-people"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>1244</h6>
-                                        <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+                                        <h6>0%</h6>
+                                        <span class="text-danger small pt-1 fw-bold">0%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
 
                                     </div>
                                 </div>
@@ -145,7 +145,7 @@
                             </div>
 
                             <div class="card-body">
-                                <h5 class="card-title">Reports <span>/Today</span></h5>
+                                <h5 class="card-title">Reports <span>/Health Index</span></h5>
 
                                 <!-- Line Chart -->
                                 <div id="reportsChart"></div>
@@ -154,13 +154,13 @@
                                     document.addEventListener("DOMContentLoaded", () => {
                                         new ApexCharts(document.querySelector("#reportsChart"), {
                                             series: [{
-                                                name: 'Sales',
+                                                name: 'Oil Quality Factor',
                                                 data: [31, 40, 28, 51, 42, 82, 56],
                                             }, {
-                                                name: 'Revenue',
+                                                name: 'Paper Condition Factor',
                                                 data: [11, 32, 45, 32, 34, 52, 41]
                                             }, {
-                                                name: 'Customers',
+                                                name: 'Dissolved Gas Analysis',
                                                 data: [15, 11, 32, 18, 9, 24, 11]
                                             }],
                                             chart: {
@@ -227,53 +227,46 @@
                             </div>
 
                             <div class="card-body">
-                                <h5 class="card-title">Recent Sales <span>| Today</span></h5>
+                                <h5 class="card-title">Recent Transformer <span>| Today</span></h5>
 
                                 <table class="table table-borderless datatable">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Customer</th>
-                                            <th scope="col">Product</th>
-                                            <th scope="col">Price</th>
-                                            <th scope="col">Status</th>
+                                            <th scope="col">Trafo ID</th>
+                                            <th scope="col">Pembangkit</th>
+                                            <th scope="col">Manufacturer</th>
+                                            <th scope="col">Tahun Operasi</th>
+                                            <th scope="col">Result</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th scope="row"><a href="#">#2457</a></th>
-                                            <td>Brandon Jacob</td>
-                                            <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                                            <td>$64</td>
-                                            <td><span class="badge bg-success">Approved</span></td>
+                                            <th scope="row"><a href="#">1</a></th>
+                                            <td>PLTU A</td>
+                                            <td><a href="#" class="text-primary">ABCD</a></td>
+                                            <td>2010</td>
+                                            <td><span class="badge bg-success">Very Good</span></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row"><a href="#">#2147</a></th>
-                                            <td>Bridie Kessler</td>
-                                            <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
-                                            <td>$47</td>
-                                            <td><span class="badge bg-warning">Pending</span></td>
+                                            <th scope="row"><a href="#">2</a></th>
+                                            <td>PLTU B</td>
+                                            <td><a href="#" class="text-primary">ASDF</a></td>
+                                            <td>2013</td>
+                                            <td><span class="badge bg-warning">Poor</span></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row"><a href="#">#2049</a></th>
-                                            <td>Ashleigh Langosh</td>
-                                            <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                                            <td>$147</td>
-                                            <td><span class="badge bg-success">Approved</span></td>
+                                            <th scope="row"><a href="#">3</a></th>
+                                            <td>PLTU C</td>
+                                            <td><QWRT href="#" class="text-primary">QWRT</a></td>
+                                            <td>2012</td>
+                                            <td><span class="badge bg-success">Good</span></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row"><a href="#">#2644</a></th>
-                                            <td>Angus Grady</td>
-                                            <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                                            <td>$67</td>
-                                            <td><span class="badge bg-danger">Rejected</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#">#2644</a></th>
-                                            <td>Raheem Lehner</td>
-                                            <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                                            <td>$165</td>
-                                            <td><span class="badge bg-success">Approved</span></td>
+                                            <th scope="row"><a href="#">4</a></th>
+                                            <td>PLTU D</td>
+                                            <td><a href="#" class="text-primar">AFGH</a></td>
+                                            <td>2009</td>
+                                            <td><span class="badge bg-danger">Very Poor</span></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -301,16 +294,16 @@
                             </div>
 
                             <div class="card-body pb-0">
-                                <h5 class="card-title">Top Selling <span>| Today</span></h5>
+                                <h5 class="card-title">Transformer <span>| Today</span></h5>
 
                                 <table class="table table-borderless">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Preview</th>
-                                            <th scope="col">Product</th>
-                                            <th scope="col">Price</th>
-                                            <th scope="col">Sold</th>
-                                            <th scope="col">Revenue</th>
+                                            <th scope="col">Trafo ID</th>
+                                            <th scope="col">Pembangkit</th>
+                                            <th scope="col">Manufacturer</th>
+                                            <th scope="col">Tahun Operasi</th>
+                                            <th scope="col">Result</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -379,7 +372,7 @@
                     </div>
 
                     <div class="card-body">
-                        <h5 class="card-title">Recent Activity <span>| Today</span></h5>
+                        <h5 class="card-title">Recent Transformer <span>| Today</span></h5>
 
                         <div class="activity">
 
@@ -452,7 +445,7 @@
                     </div>
 
                     <div class="card-body pb-0">
-                        <h5 class="card-title">Budget Report <span>| This Month</span></h5>
+                        <h5 class="card-title">Report <span>| This Month</span></h5>
 
                         <div id="budgetChart" style="min-height: 400px;" class="echart"></div>
 

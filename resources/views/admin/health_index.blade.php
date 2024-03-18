@@ -8,7 +8,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">Admin</li>
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item active">Health Index</li>
+                <li class="breadcrumb-item active">Health Index Calculator</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->

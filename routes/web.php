@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::controller(AdminController::class)->group(function () {
@@ -25,6 +26,7 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/custom-formula', 'custom_formula')->name('custom_formula');
     Route::get('/parameter', 'parameter')->name('parameter');
     Route::get('/transformer-data', 'trafo_data')->name('trafo_data');
+    Route::get('/user', 'user')->name('user');
     Route::get('/database', 'database')->name('database');
     // POST
     Route::post('/calculate-oil-factor', 'calculateOilFactor')->name('calculate.oil.factors');

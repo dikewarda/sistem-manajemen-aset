@@ -39,6 +39,13 @@
         </li>
 
         <li class="nav-item">
+            <a class="nav-link{{ Route::is('user') ? ' active' : '' }}" href="{{ route('user') }}">
+                <i class="bi bi-layout-text-window-reverse"></i>
+                <span>User</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link{{ Route::is('database') ? ' active' : '' }}" href="{{ route('database') }}">
                 <i class="bi bi-layout-text-window-reverse"></i>
                 <span>Database</span>
