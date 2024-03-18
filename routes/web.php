@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,10 +27,16 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/custom-formula', 'custom_formula')->name('custom_formula');
     Route::get('/parameter', 'parameter')->name('parameter');
     Route::get('/transformer-data', 'trafo_data')->name('trafo_data');
+    Route::get('/variabel', 'variable')->name('variable');
     Route::get('/user', 'user')->name('user');
     Route::get('/database', 'database')->name('database');
     // POST
     Route::post('/calculate-oil-factor', 'calculateOilFactor')->name('calculate.oil.factors');
+    Route::post('/select-formula', 'selectFormula')->name('selectFormula');
+    Route::post('/add-formula', 'addFormula')->name('add.formula');
+    Route::post('/edit-formula', 'editFormula')->name('edit.formula');
+    // DELETE
+    Route::delete('/delete-formula/{formulaId}', 'deleteFormula')->name('delete.formula');
 });
 Auth::routes();
 

@@ -39,6 +39,13 @@
         </li>
 
         <li class="nav-item">
+            <a class="nav-link{{ Route::is('variable') ? ' active' : '' }}" href="{{ route('variable') }}">
+                <i class="bi bi-layout-text-window-reverse"></i>
+                <span>Variabel</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link{{ Route::is('user') ? ' active' : '' }}" href="{{ route('user') }}">
                 <i class="bi bi-layout-text-window-reverse"></i>
                 <span>User</span>

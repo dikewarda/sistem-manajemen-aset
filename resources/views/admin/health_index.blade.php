@@ -19,45 +19,22 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Oil Quality Factor<span> (click field to input value)</span></h5>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <select class="form-select mb-3" id="floatingSelect" aria-label="Floating label select example">
+                                    <option selected>Open to select formula</option>
+                                    @foreach ($formulas as $formula)
+                                    <option value="{{ $formula->formula }}">{{ $formula->name }}</option>
+                                    @endforeach
+                                </select>
+                                <label for="floatingSelect">Formula</label>
+                            </div>
+                        </div>
 
-                        <form class="row g-3" action="{{ route('calculate.oil.factors')}}" method="POST">
+                        <form class="row g-3" id="calculateForm" action="{{ route('calculate.oil.factors')}}" method="POST">
                             @csrf
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="bdv" name="bdv" placeholder="input here .." require>
-                                    <label for="bdv" class="form-label">Break Down Voltage (kV)</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="waterContent" name="waterContent" placeholder="input here .." require>
-                                    <label for="waterContent" class="form-label">Water Content (ppm)</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="acidity" name="acidity" placeholder="input here .." require>
-                                    <label for="acidity" class="form-label">Acidity (MgKOH/mg)</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="tension" name="tension" placeholder="input here .." require>
-                                    <label for="tension" class="form-label">Interfacial Tension (Dyne/cm)</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="colorScale" name="colorScale" placeholder="input here .." require>
-                                    <label for="colorScale" class="form-label">Color Scale</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="result" name="result" placeholder="Input Here ..">
-                                    <label for="result" class="form-label">Result</label>
-                                </div>
-                            </div>
+                            <div id="parametersSection"></div>
+                            <div id="resultSection" class="mt-0"></div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 <button type="reset" class="btn btn-secondary">Reset</button>
@@ -210,4 +187,51 @@
     </section>
 
 </main>
+
+<script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('#calculateForm').hide();
+
+        $('#floatingSelect').change(function() {
+            var selectedFormula = $(this).val();
+            $.ajax({
+                type: "POST",
+                url: "{{ url('select-formula') }}",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    selectFormula: selectedFormula,
+                },
+                success: function(response) {
+                    $('#parametersSection').html(response);
+                    $('#calculateForm').show();
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('calculateForm');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            fetch(form.action, {
+                    method: form.method,
+                    body: new FormData(form)
+                })
+                .then(response => response.text()) // Mengambil teks dari respons
+                .then(html => {
+                    document.getElementById('resultSection').innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    });
+</script>
 @endsection
