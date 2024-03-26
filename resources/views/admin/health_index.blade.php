@@ -133,49 +133,27 @@
                     <div class="card-body">
                         <h5 class="card-title">Paper Condition Factor<span> (click field to input value)</span></h5>
 
-                        <!-- Vertical Form -->
-                        <form class="row g-3">
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="age" name="age" placeholder="Input Here ..">
-                                    <label for="age" class="form-label">Age (year)</label>
-                                </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <select class="form-select mb-3" id="floatingPaper" aria-label="Floating label select example">
+                                    <option selected>Open to select formula</option>
+                                    @foreach ($formulas as $formula)
+                                    <option value="{{ $formula->formula }}">{{ $formula->name }}</option>
+                                    @endforeach
+                                </select>
+                                <label for="floatingPaper">Formula</label>
                             </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="dpest" name="dpest" placeholder="Input Here ..">
-                                    <label for="dpest" class="form-label">DP estimated (2FAL)</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="co" name="co" placeholder="Input Here ..">
-                                    <label for="co" class="form-label">CO (ppm)</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="co2" name="co2" placeholder="Input Here ..">
-                                    <label for="co2" class="form-label">CO2 (ppm)</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="co2/co" name="co2/co" placeholder="Input Here ..">
-                                    <label for="co2/co" class="form-label">CO2/CO</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="result" name="result" placeholder="Input Here ..">
-                                    <label for="result" class="form-label">Result</label>
-                                </div>
-                            </div>
+                        </div>
+
+                        <form class="row g-3" id="calculatePaper" action="{{ route('calculate.paper.factors')}}" method="POST">
+                            @csrf
+                            <div id="papersSection"></div>
+                            <div id="paperResult" class="mt-0"></div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 <button type="reset" class="btn btn-secondary">Reset</button>
                             </div>
-                        </form><!-- Vertical Form -->
+                        </form>
 
                     </div>
                 </div>
@@ -214,6 +192,30 @@
     });
 </script>
 <script>
+    $(document).ready(function() {
+        $('#calculatePaper').hide();
+
+        $('#floatingPaper').change(function() {
+            var selectedFormulaPaper = $(this).val();
+            $.ajax({
+                type: "POST",
+                url: "{{ url('select-formula-paper') }}",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    selectFormulaPaper: selectedFormulaPaper,
+                },
+                success: function(response) {
+                    $('#papersSection').html(response);
+                    $('#calculatePaper').show();
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+<script>
     document.addEventListener('DOMContentLoaded', function() {
         const form = document.getElementById('calculateForm');
 
@@ -227,6 +229,27 @@
                 .then(response => response.text()) // Mengambil teks dari respons
                 .then(html => {
                     document.getElementById('resultSection').innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const paperForm = document.getElementById('calculatePaper');
+
+        paperForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            fetch(paperForm.action, {
+                    method: paperForm.method,
+                    body: new FormData(paperForm)
+                })
+                .then(response => response.text()) // Mengambil teks dari respons
+                .then(html => {
+                    document.getElementById('paperResult').innerHTML = html;
                 })
                 .catch(error => {
                     console.error('Error:', error);

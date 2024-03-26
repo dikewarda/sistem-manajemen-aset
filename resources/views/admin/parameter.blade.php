@@ -37,8 +37,8 @@
                                 <tr>
                                     <th scope="row">{{ $i++ }}</th>
                                     <td>{{ $oil->parameter}}</td>
-                                    <td>{{ $oil->weighting }}</td>
-                                    <td>{{ $oil->scoring }}</td>
+                                    <td>{{ $oil->weightings }}</td>
+                                    <td>{{ $oil->scorings }}</td>
                                     <td></td>
                                 </tr>
                                 @endforeach

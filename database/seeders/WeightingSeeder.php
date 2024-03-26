@@ -14,7 +14,7 @@ class WeightingSeeder extends Seeder
      */
     public function run()
     {
-        //BDV
+        //OIL FACTORS
         DB::table('weightings')->insert([
             'variable' => 'Wbdv',
             'value' => 0.169,
@@ -34,6 +34,28 @@ class WeightingSeeder extends Seeder
         DB::table('weightings')->insert([
             'variable' => 'Wcs',
             'value' => 0.114,
+        ]);
+
+        //PAPER FACTORS
+        DB::table('weightings')->insert([
+            'variable' => 'Wco',
+            'value' => 0.092,
+        ]);
+        DB::table('weightings')->insert([
+            'variable' => 'Wco2',
+            'value' => 0.092,
+        ]);
+        DB::table('weightings')->insert([
+            'variable' => 'Wco2co',
+            'value' => 0.092,
+        ]);
+        DB::table('weightings')->insert([
+            'variable' => 'Wdpest',
+            'value' => 0.378,
+        ]);
+        DB::table('weightings')->insert([
+            'variable' => 'Wage',
+            'value' => 0.346,
         ]);
     }
 }

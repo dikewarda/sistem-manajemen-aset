@@ -28,15 +28,21 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/parameter', 'parameter')->name('parameter');
     Route::get('/transformer-data', 'trafo_data')->name('trafo_data');
     Route::get('/variabel', 'variable')->name('variable');
+    Route::get('/get-columns/{name}', 'getColumns')->name('get.columns');
     Route::get('/user', 'user')->name('user');
     Route::get('/database', 'database')->name('database');
     // POST
     Route::post('/calculate-oil-factor', 'calculateOilFactor')->name('calculate.oil.factors');
+    Route::post('/calculate-paper-factor', 'calculatePaperFactor')->name('calculate.paper.factors');
     Route::post('/select-formula', 'selectFormula')->name('selectFormula');
+    Route::post('/select-formula-paper', 'selectFormulaPaper')->name('selectFormulaPaper');
     Route::post('/add-formula', 'addFormula')->name('add.formula');
     Route::post('/edit-formula', 'editFormula')->name('edit.formula');
+    Route::post('/add-variable', 'addVariable')->name('add.variable');
+    Route::post('/edit-variable', 'editVariable')->name('edit.variable');
     // DELETE
     Route::delete('/delete-formula/{formulaId}', 'deleteFormula')->name('delete.formula');
+    Route::delete('/delete-variable/{variableName}', 'deleteVariable')->name('delete.variable');
 });
 Auth::routes();
 

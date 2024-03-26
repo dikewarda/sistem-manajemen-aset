@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             WeightingSeeder::class,
             RatingSeeder::class,
             OilFactorSeeder::class,
+            PaperFactorSeeder::class,
         ]);
     }
 }

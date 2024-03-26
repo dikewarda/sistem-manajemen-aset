@@ -843,6 +843,11 @@ h6 {
   background: #ffecdf;
 }
 
+.dashboard .product-card .card-icon {
+  color: #ff1d1d;
+  background: #ffdfdf;
+}
+
 /* Activity */
 .dashboard .activity {
   font-size: 14px;
@@ -966,6 +971,43 @@ h6 {
   max-width: 60px;
 }
 
+.table-wrapper {
+  overflow-x: auto;
+  max-height: 25rem;
+}
+
+.table-responsive {
+  max-height: 500px;
+  overflow: hidden;
+  position: relative;
+  overflow-y: scroll;
+}
+
+.table-wrapper .table thead th {
+  border: 0;
+  background-color: rgba(1, 4, 136, 0.9);
+  color: #fff;
+  padding: 0.5rem;
+  white-space: nowrap;
+}
+
+.table-wrapper .table thead {
+  background: #f6f6fe;
+  position: sticky;
+  top: 0;
+}
+
+#columnList{
+  max-height: 150px;
+  overflow-y: scroll;
+}
+
+.addData {
+  position: fixed;
+  bottom: 20%;
+  right: 5%;
+  z-index: 9999;
+}
 /*--------------------------------------------------------------
 # Icons list page
 --------------------------------------------------------------*/
